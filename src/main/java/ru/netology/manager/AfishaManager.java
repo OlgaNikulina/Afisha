@@ -29,7 +29,7 @@ public class AfishaManager {
     public Afisha[] getLastsTenAdded() {
         Afisha[] result = new Afisha[movies.length];
         for (int i = 0; i < result.length ; i++) {
-            int amountOfMovie = 3;
+            int amountOfMovie = 5;
             if (i < amountOfMovie) {
                 int index = movies.length - i - 1;
                 result[i] = movies[index];

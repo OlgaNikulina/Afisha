@@ -8,9 +8,9 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class AfishaManagerTest {
     private AfishaManager manager = new AfishaManager();
-    private Afisha movie1 = new Afisha(1, "movie1", "http://...", "thriller", 10);
-    private Afisha movie2 = new Afisha(2, "movie2", "http://...", "thriller", 10);
-    private Afisha movie3 = new Afisha(3, "movie", "http://...", "thriller", 10);
+    private Afisha movie1 = new Afisha(1, "movie1", "http://...", "thriller", 5);
+    private Afisha movie2 = new Afisha(2, "movie2", "http://...", "thriller", 5);
+    private Afisha movie3 = new Afisha(3, "movie", "http://...", "thriller", 5);
 
     @BeforeEach
     @Test
@@ -24,6 +24,7 @@ public class AfishaManagerTest {
     public void shouldGetAll() {
         manager.getMovies();
     }
+
     @Test
     public void shouldGetTenLasts() {
         manager.getLastsTenAdded();
