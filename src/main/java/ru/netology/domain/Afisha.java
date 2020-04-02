@@ -18,6 +18,10 @@ public class Afisha {
         this.amountOfMovie = amountOfMovie;
     }
 
+    public Afisha(int amountOfMovie) {
+        this.amountOfMovie = amountOfMovie;
+    }
+
     public int getId() {
         return id;
     }

@@ -26,14 +26,6 @@ public class AfishaManagerTest {
     }
 
     @Test
-    public void shouldGetTenLasts() {
-        manager.getLastsTenAdded();
-        Afisha[] actual = manager.getMovies();
-        Afisha[] expected = new Afisha[]{movie3, movie2, movie1};
-        assertArrayEquals(expected, actual);
-    }
-
-    @Test
     public void shouldNotGetLastsMoreTen() {
         AfishaManager manager = new AfishaManager();
         Afisha movie1 = new Afisha(1, "movie1", "http://...", "thriller", 5);
