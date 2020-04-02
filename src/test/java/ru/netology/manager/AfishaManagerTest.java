@@ -40,7 +40,7 @@ public class AfishaManagerTest {
 
         manager.removeById(idToRemove);
         Afisha[] expected = new Afisha[]{invisibleMan, bloodshot};
-        Afisha[] actual = manager.findAll();
+        Afisha[] actual = manager.getAll();
         assertArrayEquals(expected, actual);
 
         verify(repository).removeById(idToRemove);
@@ -55,10 +55,9 @@ public class AfishaManagerTest {
 
         manager.removeById(idToRemove);
         Afisha[] expected = new Afisha[]{bloodshot, invisibleMan, gentlemen};
-        Afisha[] actual = manager.findAll();
+        Afisha[] actual = manager.getAll();
 
         assertArrayEquals(expected, actual);
         verify(repository).removeById(idToRemove);
     }
-}
 }
