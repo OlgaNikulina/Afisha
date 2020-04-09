@@ -12,10 +12,19 @@ public class MovieManagerTest {
 
     @BeforeEach
     @Test
-    public void shouldNotGetLastsMoreTen() {
+    public void shouldGetTenLasts() {
         MovieManager manager = new MovieManager(5);
         manager.getLastsTenAdded(5);
-        Movie[] actual = manager.getLastsTenAdded(5);
+        Movie[] actual = manager.add();
+        Movie[][] expected = new Movie[][]{movie5, movie4, movie3, movie2, movie1};
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotGetLastsMoreTen() {
+        MovieManager manager = new MovieManager(100);
+        manager.getLastsTenAdded(5);
+        Movie[] actual = manager.add();
         Movie[][] expected = new Movie[][]{movie5, movie4, movie3, movie2, movie1};
         assertArrayEquals(expected, actual);
     }
