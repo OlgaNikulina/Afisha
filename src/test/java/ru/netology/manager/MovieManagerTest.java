@@ -7,7 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.netology.domain.Movie;
-import ru.netology.domain.MovieRepository;
+import ru.netology.repository.MovieRepository;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.mockito.Mockito.*;
@@ -15,12 +15,12 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class MovieManagerTest {
     @Mock
-    private MovieRepository repository;
     @InjectMocks
     private MovieManager manager;
-    private Movie gentlemen = new Movie(1, "gentlemen", "https://www.kinopoisk.ru/film/1143242/", "criminal", 10);
-    private Movie invisibleMan = new Movie(2, "invisible man", "https://www.kinopoisk.ru/film/420454/", "horror", 10);
-    private Movie bloodshot = new Movie(3, "bloodshot", "https://www.kinopoisk.ru/film/512673/", "fantastic", 10);
+    private MovieRepository repository;
+    private Movie gentlemen;
+    private Movie invisibleMan;
+    private Movie bloodshot;
 
 
     @BeforeEach
