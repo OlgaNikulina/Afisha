@@ -48,24 +48,25 @@ public class MovieRepository {
         movies = tmp;
     }
 
-    public int findById(int id) {
+    public Movie[] findById(int id) {
+
         int length = movies.length;
         Movie[] tmp = new Movie[length];
         int index = 0;
         for (Movie movie : movies) {
             if (movie.getId() != id) {
+                tmp[index] = movie;
                 index++;
             }
+            movies = tmp;
         }
-        return index;
+        return Movie[] movies;
     }
 
     public Movie[] removeAll() {
-        Movie[] result = new Movie[]{};
+        Movie[] result = new Movie[0];
 
-        return result;
+        return new Movie[0];
     }
-
-
 }
 

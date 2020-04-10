@@ -5,13 +5,12 @@ import ru.netology.repository.MovieRepository;
 
 public class MovieManager {
     private MovieRepository repository;
-    private int amountOfMovie = 5;
     private int maxAmountOfMovie = 10;
     private int minAmountOfMovie = 1;
     Movie[] movies;
 
 
-    public MovieManager(MovieRepository repository){
+    public MovieManager(MovieRepository repository) {
         this.repository = repository;
     }
 
@@ -20,7 +19,6 @@ public class MovieManager {
     }
 
     public Movie[] getAll() {
-        Movie[] movies = repository.findAll();
         Movie[] result = new Movie[movies.length];
         for (int i = 0; i < result.length; i++) {
             int index = movies.length - i - 1;
@@ -38,22 +36,18 @@ public class MovieManager {
     }
 
     public Movie[] getLastsTenAdded(int amountOfMovie) {
-        Movie[] result = new Movie[movies.length];
+
         if (amountOfMovie > maxAmountOfMovie) {
-            return null;
+            amountOfMovie = maxAmountOfMovie;
         }
         if (amountOfMovie < minAmountOfMovie) {
-            return null;
+            amountOfMovie = maxAmountOfMovie;
         }
+        Movie[] result = new Movie[amountOfMovie];
         for (int i = 0; i < result.length; i++) {
-            if (amountOfMovie > i) {
-                return result;
-            }
-            int index = movies.length - i - 1;
+            int index = amountOfMovie - i - 1;
             result[i] = movies[index];
         }
-        this.amountOfMovie = amountOfMovie;
-
         return result;
     }
 }
