@@ -39,11 +39,11 @@ public class MovieManager {
 
     public Movie[] getLastsTenAdded(int amountOfMovie) {
         Movie[] result = new Movie[movies.length];
-        if (amountOfMovie >= maxAmountOfMovie) {
-            return result;
+        if (amountOfMovie > maxAmountOfMovie) {
+            return null;
         }
-        if (amountOfMovie <= minAmountOfMovie) {
-            return result;
+        if (amountOfMovie < minAmountOfMovie) {
+            return null;
         }
         for (int i = 0; i < result.length; i++) {
             if (amountOfMovie > i) {

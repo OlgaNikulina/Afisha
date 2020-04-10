@@ -15,25 +15,132 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class MovieManagerTest {
     @Mock
-    @InjectMocks
-    private MovieManager manager;
     private MovieRepository repository;
+    @InjectMocks
+    private MovieManager manager = new MovieManager(repository);
     private Movie gentlemen;
     private Movie invisibleMan;
     private Movie bloodshot;
+    private Movie movie1;
+    private Movie movie2;
+    private Movie movie3;
+    private Movie movie4;
+    private Movie movie5;
+    private Movie movie6;
+    private Movie movie7;
+    private Movie movie8;
+    private Movie movie9;
+    private Movie movie10;
 
-
-    @BeforeEach
+    @Test
     public void setUp() {
-        MovieManager manager = new MovieManager(repository);
+
         manager.add(gentlemen);
         manager.add(invisibleMan);
         manager.add(bloodshot);
     }
 
     @Test
+    public void shouldGetFiveLasts() {
+        manager.add(movie1);
+        manager.add(movie2);
+        manager.add(movie3);
+        manager.add(movie4);
+        manager.add(movie5);
+
+        manager.getLastsTenAdded(5);
+
+        Movie[] expected = new Movie[]{movie5, movie4, movie3, movie2, movie1};
+        Movie[] actual = manager.getAll();
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldGetTenMovies() {
+        manager.add(movie1);
+        manager.add(movie2);
+        manager.add(movie3);
+        manager.add(movie4);
+        manager.add(movie5);
+        manager.add(movie6);
+        manager.add(movie7);
+        manager.add(movie8);
+        manager.add(movie9);
+        manager.add(movie10);
+
+        manager.getLastsTenAdded(10);
+
+        Movie[] expected = new Movie[]{movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};
+        Movie[] actual = manager.getLastsTenAdded(10);
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldGetOneMovie() {
+        manager.add(movie1);
+
+        manager.getLastsTenAdded(1);
+
+        Movie[] expected = new Movie[]{movie1};
+        Movie[] actual = manager.getLastsTenAdded(1);
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotGetLastsMoreTen() {
+
+        manager.add(movie1);
+        manager.add(movie2);
+        manager.add(movie3);
+        manager.add(movie4);
+        manager.add(movie5);
+
+        manager.getLastsTenAdded(100);
+
+        Movie[] expected = null;
+        Movie[] actual = manager.getLastsTenAdded(100);
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotGetZero() {
+
+        manager.add(movie1);
+        manager.add(movie2);
+        manager.add(movie3);
+        manager.add(movie4);
+        manager.add(movie5);
+
+        manager.getLastsTenAdded(0);
+
+        Movie[] expected = null;
+        Movie[] actual = manager.getLastsTenAdded(0);
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotGetValueWithMinus() {
+
+        manager.add(movie1);
+        manager.add(movie2);
+        manager.add(movie3);
+        manager.add(movie4);
+        manager.add(movie5);
+
+        manager.getLastsTenAdded(-10);
+
+        Movie[] expected = null;
+        Movie[] actual = manager.getLastsTenAdded(-10);
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
     public void shouldRemoveIfExists() {
-        int idToRemove = 1;
+        int idToRemove = 2;
         Movie[] returned = new Movie[]{invisibleMan, bloodshot};
         doReturn(returned).when(repository).findAll();
         doNothing().when(repository).removeById(idToRemove);
@@ -48,7 +155,7 @@ public class MovieManagerTest {
 
     @Test
     public void shouldNotRemoveIfNotExists() {
-        int idToRemove = 4 ;
+        int idToRemove = 4;
         Movie[] returned = new Movie[]{gentlemen, invisibleMan, bloodshot};
         doReturn(returned).when(repository).findAll();
         doNothing().when(repository).removeById(idToRemove);

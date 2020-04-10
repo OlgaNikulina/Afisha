@@ -1,5 +1,6 @@
 package ru.netology.repository;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Movie;
 import ru.netology.manager.MovieManager;
@@ -13,7 +14,6 @@ class MovieRepositoryTest {
     private Movie gentlemen = new Movie(1, "gentlemen", "https://www.kinopoisk.ru/film/1143242/", "criminal", 10);
     private Movie invisibleMan = new Movie(2, "invisible man", "https://www.kinopoisk.ru/film/420454/", "horror", 10);
     private Movie bloodshot = new Movie(3, "bloodshot", "https://www.kinopoisk.ru/film/512673/", "fantastic", 10);
-
 
     @Test
     void shouldSave() {
@@ -31,6 +31,16 @@ class MovieRepositoryTest {
 
     @Test
     void findById() {
+
+        manager.add(gentlemen);
+        manager.add(invisibleMan);
+        manager.add(bloodshot);
+
+        repository.findById(2);
+
+        Movie[] expected = new Movie[]{invisibleMan};
+        Movie[] actual = repository.findAll();
+        assertArrayEquals(expected, actual);
     }
 
     @Test
