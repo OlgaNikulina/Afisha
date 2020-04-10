@@ -102,6 +102,8 @@ public class MovieManagerTest {
 
     @Test
     public void shouldAddMovie() {
+        Movie[] movies = new Movie[]{movie1, movie2, movie3, movie4, movie5};
+        manager.add(movie6);
 
         Movie[] expected = new Movie[]{movie1, movie2, movie3, movie4, movie5, movie6};
         Movie[] actual = manager.add(movie6);
