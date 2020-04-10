@@ -4,10 +4,11 @@ import ru.netology.domain.Movie;
 import ru.netology.repository.MovieRepository;
 
 public class MovieManager {
+    private Movie[] movies = new Movie[]{};
     private MovieRepository repository;
     private int maxAmountOfMovie = 10;
     private int minAmountOfMovie = 1;
-    Movie[] movies;
+
 
 
     public MovieManager(MovieRepository repository) {
