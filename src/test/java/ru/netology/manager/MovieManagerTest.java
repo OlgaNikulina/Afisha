@@ -30,7 +30,7 @@ public class MovieManagerTest {
     private Movie movie9;
     private Movie movie10;
 
-
+    @BeforeEach
     public void setUp() {
 
         manager.add(movie1);
@@ -47,16 +47,11 @@ public class MovieManagerTest {
 
     @Test
     public void shouldGetFiveLasts() {
-        manager.add(movie1);
-        manager.add(movie2);
-        manager.add(movie3);
-        manager.add(movie4);
-        manager.add(movie5);
 
         manager.getLastsTenAdded(5);
 
         Movie[] expected = new Movie[]{movie5, movie4, movie3, movie2, movie1};
-        Movie[] actual = manager.getLastsTenAdded(5);
+        Movie[] actual = manager.getAll();
         assertArrayEquals(expected, actual);
     }
 
@@ -86,7 +81,8 @@ public class MovieManagerTest {
 
         manager.getLastsTenAdded(100);
 
-        Movie[] expected = new Movie[]{movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};;
+        Movie[] expected = new Movie[]{movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};
+        ;
         Movie[] actual = manager.getLastsTenAdded(100);
 
         assertArrayEquals(expected, actual);
@@ -97,7 +93,8 @@ public class MovieManagerTest {
 
         manager.getLastsTenAdded(0);
 
-        Movie[] expected = new Movie[]{movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};;
+        Movie[] expected = new Movie[]{movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};
+        ;
         Movie[] actual = manager.getLastsTenAdded(0);
 
         assertArrayEquals(expected, actual);
@@ -108,7 +105,8 @@ public class MovieManagerTest {
 
         manager.getLastsTenAdded(-10);
 
-        Movie[] expected = new Movie[]{movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};;
+        Movie[] expected = new Movie[]{movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};
+        ;
         Movie[] actual = manager.getLastsTenAdded(-10);
 
         assertArrayEquals(expected, actual);

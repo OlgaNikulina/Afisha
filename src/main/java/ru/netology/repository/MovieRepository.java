@@ -60,7 +60,7 @@ public class MovieRepository {
             }
             movies = tmp;
         }
-        return Movie[] movies;
+        return movies;
     }
 
     public Movie[] removeAll() {
