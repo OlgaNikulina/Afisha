@@ -46,7 +46,7 @@ public class MovieRepository {
     }
 
     public Movie[] removeAll() {
-        Movie[] result = new Movie[0];
+        Movie[] result = new Movie[]{};
 
         return result;
     }
