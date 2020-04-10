@@ -11,9 +11,16 @@ class MovieRepositoryTest {
     private Movie starWars = new Movie();
     private MovieRepository repository = new MovieRepository();
     private MovieManager manager = new MovieManager(repository);
-    private Movie gentlemen = new Movie(1, "gentlemen", "https://www.kinopoisk.ru/film/1143242/", "criminal", 10);
-    private Movie invisibleMan = new Movie(2, "invisible man", "https://www.kinopoisk.ru/film/420454/", "horror", 10);
-    private Movie bloodshot = new Movie(3, "bloodshot", "https://www.kinopoisk.ru/film/512673/", "fantastic", 10);
+    private Movie movie1;
+    private Movie movie2;
+    private Movie movie3;
+    private Movie movie4;
+    private Movie movie5;
+    private Movie movie6;
+    private Movie movie7;
+    private Movie movie8;
+    private Movie movie9;
+    private Movie movie10;
 
     @Test
     void shouldSave() {
@@ -26,50 +33,45 @@ class MovieRepositoryTest {
     }
 
     @Test
-    void findAll() {
-    }
-
-    @Test
     void findById() {
 
-        manager.add(gentlemen);
-        manager.add(invisibleMan);
-        manager.add(bloodshot);
+        manager.add(movie1);
+        manager.add(movie2);
+        manager.add(movie3);
 
         repository.findById(2);
 
-        Movie[] expected = new Movie[]{invisibleMan};
-        Movie[] actual = repository.findAll();
+        Movie[] expected = new Movie[]{movie2};
+        Movie[] actual = manager.getAll();
         assertArrayEquals(expected, actual);
     }
 
     @Test
     void removeAll() {
-        MovieManager manager = new MovieManager(repository);
 
-            manager.add(gentlemen);
-            manager.add(invisibleMan);
-            manager.add(bloodshot);
+        manager.add(movie1);
+        manager.add(movie2);
+        manager.add(movie3);
 
-            repository.removeAll();
+        repository.removeAll();
 
-            Movie[] expected = new Movie[]{};
-            Movie[] actual = repository.removeAll();
+        Movie[] expected = new Movie[]{};
+        Movie[] actual = repository.removeAll();
 
-            assertArrayEquals(expected, actual);
-        }
+        assertArrayEquals(expected, actual);
+    }
 
     @Test
     public void shouldRemoveById() {
         int idToRemove = 2;
 
-        manager.add(gentlemen);
-        manager.add(invisibleMan);
-        manager.add(bloodshot);
+        manager.add(movie1);
+        manager.add(movie2);
+        manager.add(movie3);
 
         repository.removeById(idToRemove);
 
-        Movie[] expected = new Movie[]{gentlemen, bloodshot};
+        Movie[] expected = new Movie[]{movie2, movie1};
         Movie[] actual = repository.findAll();
 
         assertArrayEquals(expected, actual);
@@ -79,13 +81,13 @@ class MovieRepositoryTest {
     public void shouldNotRemoveIfNotExists() {
         int idToRemove = 4;
 
-        manager.add(gentlemen);
-        manager.add(invisibleMan);
-        manager.add(bloodshot);
+        manager.add(movie1);
+        manager.add(movie2);
+        manager.add(movie3);
 
         repository.removeById(idToRemove);
 
-        Movie[] expected = new Movie[]{gentlemen, invisibleMan, bloodshot};
+        Movie[] expected = new Movie[]{movie3, movie2, movie1};
         Movie[] actual = repository.findAll();
 
         assertArrayEquals(expected, actual);

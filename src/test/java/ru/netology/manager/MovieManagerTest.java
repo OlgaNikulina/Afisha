@@ -18,9 +18,7 @@ public class MovieManagerTest {
     private MovieRepository repository;
     @InjectMocks
     private MovieManager manager = new MovieManager(repository);
-    private Movie gentlemen;
-    private Movie invisibleMan;
-    private Movie bloodshot;
+
     private Movie movie1;
     private Movie movie2;
     private Movie movie3;
@@ -35,9 +33,9 @@ public class MovieManagerTest {
     @Test
     public void setUp() {
 
-        manager.add(gentlemen);
-        manager.add(invisibleMan);
-        manager.add(bloodshot);
+        manager.add(movie1);
+        manager.add(movie2);
+        manager.add(movie3);
     }
 
     @Test
@@ -141,13 +139,18 @@ public class MovieManagerTest {
     @Test
     public void shouldRemoveIfExists() {
         int idToRemove = 2;
-        Movie[] returned = new Movie[]{invisibleMan, bloodshot};
+        manager.add(movie1);
+        manager.add(movie2);
+        manager.add(movie3);
+
+        Movie[] returned = new Movie[]{movie1, movie3};
         doReturn(returned).when(repository).findAll();
         doNothing().when(repository).removeById(idToRemove);
 
         manager.removeById(idToRemove);
-        Movie[] expected = new Movie[]{invisibleMan, bloodshot};
+        Movie[] expected = new Movie[]{movie3, movie1};
         Movie[] actual = manager.getAll();
+
         assertArrayEquals(expected, actual);
 
         verify(repository).removeById(idToRemove);
@@ -156,12 +159,17 @@ public class MovieManagerTest {
     @Test
     public void shouldNotRemoveIfNotExists() {
         int idToRemove = 4;
-        Movie[] returned = new Movie[]{gentlemen, invisibleMan, bloodshot};
+
+        manager.add(movie1);
+        manager.add(movie2);
+        manager.add(movie3);
+
+        Movie[] returned = new Movie[]{movie1, movie2, movie3};
         doReturn(returned).when(repository).findAll();
         doNothing().when(repository).removeById(idToRemove);
 
         manager.removeById(idToRemove);
-        Movie[] expected = new Movie[]{bloodshot, invisibleMan, gentlemen};
+        Movie[] expected = new Movie[]{movie3, movie2, movie1};
         Movie[] actual = manager.getAll();
 
         assertArrayEquals(expected, actual);
