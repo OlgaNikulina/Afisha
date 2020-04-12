@@ -1,5 +1,6 @@
 package ru.netology.manager;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Movie;
@@ -39,7 +40,7 @@ public class MovieManagerTest {
     @Test
     public void shouldGetFiveLasts() {
 
-        Movie[] expected = new Movie[]{movie5, movie4, movie3, movie2, movie1};
+        Movie[] expected = new Movie[]{movie10, movie9, movie8, movie7, movie6};
         Movie[] actual = manager.getLastsTenAdded(5);
         assertArrayEquals(expected, actual);
     }
@@ -54,6 +55,8 @@ public class MovieManagerTest {
 
     @Test
     public void shouldGetOneMovie() {
+
+        manager.add(movie1);
 
         Movie[] expected = new Movie[]{movie1};
         Movie[] actual = manager.getLastsTenAdded(1);
@@ -84,17 +87,6 @@ public class MovieManagerTest {
 
         Movie[] expected = new Movie[]{movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};
         Movie[] actual = manager.getLastsTenAdded(-10);
-
-        assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldAddMovie() {
-        Movie[] movies = new Movie[]{movie1, movie2, movie3, movie4, movie5};
-        manager.add(movie6);
-
-        Movie[] expected = new Movie[]{movie1, movie2, movie3, movie4, movie5, movie6};
-        Movie[] actual = manager.add(movie6);
 
         assertArrayEquals(expected, actual);
     }
