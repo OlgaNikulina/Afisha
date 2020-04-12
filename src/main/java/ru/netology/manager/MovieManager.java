@@ -20,6 +20,7 @@ public class MovieManager {
     }
 
     public Movie[] getAll() {
+        Movie[] movies = repository.findAll();
         Movie[] result = new Movie[movies.length];
         for (int i = 0; i < result.length; i++) {
             int index = movies.length - i - 1;

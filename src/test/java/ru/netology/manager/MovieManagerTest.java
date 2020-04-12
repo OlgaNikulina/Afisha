@@ -19,7 +19,7 @@ public class MovieManagerTest {
     @InjectMocks
     private MovieManager manager = new MovieManager(repository);
 
-    private Movie movie1 = new Movie(2, "movie2", "http://...", "thriller");
+    private Movie movie1 = new Movie(1, "movie1", "http://...", "thriller");
     private Movie movie2 = new Movie(2, "movie2", "http://...", "thriller");
     private Movie movie3 = new Movie(3, "movie3", "http://...", "thriller");
     private Movie movie4 = new Movie(4, "movie4", "http://...", "thriller");
@@ -48,7 +48,7 @@ public class MovieManagerTest {
     @Test
     public void shouldGetFiveLasts() {
 
-        Movie[] expected = new Movie[]{movie5, movie4, movie3, movie2, movie1};
+        Movie[] expected = new Movie[]{movie10, movie9, movie8, movie7, movie6};
         Movie[] actual = manager.getLastsTenAdded(5);
         assertArrayEquals(expected, actual);
     }
@@ -74,7 +74,6 @@ public class MovieManagerTest {
     public void shouldNotGetLastsMoreTen() {
 
         Movie[] expected = new Movie[]{movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};
-        ;
         Movie[] actual = manager.getLastsTenAdded(100);
 
         assertArrayEquals(expected, actual);
@@ -84,7 +83,6 @@ public class MovieManagerTest {
     public void shouldNotGetZero() {
 
         Movie[] expected = new Movie[]{movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};
-        ;
         Movie[] actual = manager.getLastsTenAdded(0);
 
         assertArrayEquals(expected, actual);
@@ -94,7 +92,6 @@ public class MovieManagerTest {
     public void shouldNotGetValueWithMinus() {
 
         Movie[] expected = new Movie[]{movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};
-        ;
         Movie[] actual = manager.getLastsTenAdded(-10);
 
         assertArrayEquals(expected, actual);
