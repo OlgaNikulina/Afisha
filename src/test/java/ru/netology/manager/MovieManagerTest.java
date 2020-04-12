@@ -48,8 +48,6 @@ public class MovieManagerTest {
     @Test
     public void shouldGetFiveLasts() {
 
-        manager.getLastsTenAdded(5);
-
         Movie[] expected = new Movie[]{movie5, movie4, movie3, movie2, movie1};
         Movie[] actual = manager.getLastsTenAdded(5);
         assertArrayEquals(expected, actual);
@@ -57,8 +55,6 @@ public class MovieManagerTest {
 
     @Test
     public void shouldGetTenMovies() {
-
-        manager.getLastsTenAdded(10);
 
         Movie[] expected = new Movie[]{movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};
         Movie[] actual = manager.getLastsTenAdded(10);
@@ -68,8 +64,6 @@ public class MovieManagerTest {
     @Test
     public void shouldGetOneMovie() {
 
-        manager.getLastsTenAdded(1);
-
         Movie[] expected = new Movie[]{movie1};
         Movie[] actual = manager.getLastsTenAdded(1);
 
@@ -78,8 +72,6 @@ public class MovieManagerTest {
 
     @Test
     public void shouldNotGetLastsMoreTen() {
-
-        manager.getLastsTenAdded(100);
 
         Movie[] expected = new Movie[]{movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};
         ;
@@ -91,8 +83,6 @@ public class MovieManagerTest {
     @Test
     public void shouldNotGetZero() {
 
-        manager.getLastsTenAdded(0);
-
         Movie[] expected = new Movie[]{movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};
         ;
         Movie[] actual = manager.getLastsTenAdded(0);
@@ -102,8 +92,6 @@ public class MovieManagerTest {
 
     @Test
     public void shouldNotGetValueWithMinus() {
-
-        manager.getLastsTenAdded(-10);
 
         Movie[] expected = new Movie[]{movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};
         ;
