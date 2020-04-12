@@ -10,7 +10,6 @@ public class MovieManager {
     private int minAmountOfMovie = 1;
 
 
-
     public MovieManager(MovieRepository repository) {
         this.repository = repository;
     }
