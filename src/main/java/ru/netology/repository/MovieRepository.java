@@ -16,13 +16,7 @@ public class MovieRepository {
     }
 
     public Movie[] findAll() {
-        int length = movies.length;
-        Movie[] tmp = new Movie[length];
-        for (int i = 0; i < tmp.length; i++) {
-            int index = movies.length - i - 1;
-            tmp[i] = movies[index];
-            }
-        return tmp;
+        return movies;
     }
 
     public void removeById(int id) {
@@ -39,22 +33,15 @@ public class MovieRepository {
     }
 
     public Movie[] findById(int id) {
-        int length = movies.length;
-        Movie[] tmp = new Movie[length];
-        int index = 0;
         for (Movie movie : movies) {
-            if (movie.getId() != id) {
-                tmp[index] = movie;
-                index++;
+            if (movie.getId() == id) {
+                return new Movie[]{movie};
             }
-            movies = tmp;
         }
-        Movie[] movie = new Movie[id];
-        return new Movie[id];
+        return null;
     }
 
     public Movie[] removeAll() {
-
         return new Movie[0];
     }
 }
