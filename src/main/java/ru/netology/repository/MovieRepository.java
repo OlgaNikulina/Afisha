@@ -32,10 +32,10 @@ public class MovieRepository {
         movies = tmp;
     }
 
-    public Movie[] findById(int id) {
+    public Movie findById(int id) {
         for (Movie movie : movies) {
             if (movie.getId() == id) {
-                return new Movie[]{movie};
+                return movie;
             }
         }
         return null;
@@ -45,4 +45,3 @@ public class MovieRepository {
         return new Movie[0];
     }
 }
-

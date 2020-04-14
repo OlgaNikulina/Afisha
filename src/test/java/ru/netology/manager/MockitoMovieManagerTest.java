@@ -20,13 +20,6 @@ class MockitoMovieManagerTest {
     private Movie movie1 = new Movie(1, "movie1", "http://...", "thriller");
     private Movie movie2 = new Movie(2, "movie2", "http://...", "thriller");
     private Movie movie3 = new Movie(3, "movie3", "http://...", "thriller");
-    private Movie movie4 = new Movie(4, "movie4", "http://...", "thriller");
-    private Movie movie5 = new Movie(5, "movie5", "http://...", "thriller");
-    private Movie movie6 = new Movie(6, "movie6", "http://...", "thriller");
-    private Movie movie7 = new Movie(7, "movie7", "http://...", "thriller");
-    private Movie movie8 = new Movie(8, "movie8", "http://...", "thriller");
-    private Movie movie9 = new Movie(9, "movie9", "http://...", "thriller");
-    private Movie movie10 = new Movie(10, "movie10", "http://...", "thriller");
 
     @Test
     public void shouldRemoveIfExists() {
@@ -40,7 +33,7 @@ class MockitoMovieManagerTest {
         doNothing().when(repository).removeById(idToRemove);
 
         repository.removeById(idToRemove);
-        Movie[] expected = new Movie[]{movie3, movie1};
+        Movie[] expected = new Movie[]{movie1, movie3};
         Movie[] actual = repository.findAll();
 
         assertArrayEquals(expected, actual);
