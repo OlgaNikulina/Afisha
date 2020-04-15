@@ -49,7 +49,7 @@ class MockitoMovieManagerTest {
         manager.add(movie2);
         manager.add(movie3);
 
-        Movie[] returned = new Movie[]{movie1, movie2, movie3};
+        Movie[] returned = new Movie[]{movie3, movie2, movie1};
         doReturn(returned).when(repository).findAll();
         doNothing().when(repository).removeById(idToRemove);
 
