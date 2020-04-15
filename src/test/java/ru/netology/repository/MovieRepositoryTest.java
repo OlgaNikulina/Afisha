@@ -76,7 +76,6 @@ class MovieRepositoryTest {
         repository.removeById(idToRemove);
 
         Movie[] expected = new Movie[]{movie3, movie2, movie1};
-        Movie[] actual = manager.getAll();
         assertThrows(expected, ArrayIndexOutOfBoundsException.class, () -> repository.removeById(idToRemove));
     }
 }
