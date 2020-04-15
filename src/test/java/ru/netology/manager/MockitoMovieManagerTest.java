@@ -49,12 +49,12 @@ class MockitoMovieManagerTest {
         manager.add(movie2);
         manager.add(movie3);
 
-        Movie[] returned = new Movie[]{movie3, movie2, movie1};
+        Movie[] returned = new Movie[]{movie1, movie2, movie3};
         doReturn(returned).when(repository).findAll();
         doNothing().when(repository).removeById(idToRemove);
 
         repository.removeById(idToRemove);
-        Movie[] expected = new Movie[]{movie3, movie2, movie1};
+        Movie[] expected = new Movie[]{movie1, movie2, movie3};
         Movie[] actual = repository.findAll();
 
         assertArrayEquals(expected, actual);
